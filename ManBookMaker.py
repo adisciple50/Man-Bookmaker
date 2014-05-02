@@ -3,6 +3,7 @@ __author__ = 'Jason Crockett'
 import dbm.gnu as gdbm
 import subprocess
 import os as terminal
+import gz
 
 def getArticles(verbose):
     with gdbm.open("/var/cache/man/index.db", "r") as IndexDb:
@@ -48,3 +49,7 @@ def runLocalTest():
     generateArticles("yes",Articles)
 
 runLocalTest()
+
+def getFileList(FolderPath):
+	FileList = [ f for f in listdir(FolderPath) if isfile(join(FolderPath,f)) ]
+	return FileList
